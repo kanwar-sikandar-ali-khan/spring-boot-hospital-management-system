@@ -1,6 +1,5 @@
 package com.codingshuttle.youtube.hospitalManagement.config;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -11,24 +10,27 @@ import io.swagger.v3.oas.models.tags.Tag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI myCustomConfig(){
+    public OpenAPI myCustomConfig() {
         return new OpenAPI()
-                .info(
-                        new Info().title("Hospital Management System")
-                                .description("By KANWAR SIKANDAR ALI")
+                .info(new Info()
+                        .   title("Hospital Management System")
+                        .description("By KANWAR SIKANDAR ALI")
+                        .version("1.0")
                 )
-                .servers(Arrays.asList(new Server().url("http://localhost:8080").description("local"),
-                        new Server().url("http://localhost:8081").description("live")))
-                .tags(Arrays.asList(
+                // 👇 Include your actual context path
+                .servers(List.of(
+                        new Server().url("/api/v1").description("Local Server")
+                ))
+                .tags(List.of(
                         new Tag().name("Patient APIs")
                 ))
+                // 👇 JWT Security setup
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new Components().addSecuritySchemes(
                         "bearerAuth", new SecurityScheme()
