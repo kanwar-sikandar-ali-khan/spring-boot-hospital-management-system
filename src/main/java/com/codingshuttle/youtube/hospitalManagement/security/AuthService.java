@@ -20,9 +20,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Set;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -63,13 +65,21 @@ public class AuthService {
         }
 
         user = userRepository.save(user);
+        System.out.println("User saved: " + user);
+        log.info("User created: {}", user);
+
+
+
 
         Patient patient = Patient.builder()
                 .name(signupRequestDto.getName())
                 .email(signupRequestDto.getUsername())
                 .user(user)
                 .build();
-        patientRepository.save(patient);
+        patient =   patientRepository.save(patient);
+
+
+        log.info("chhecking patient {}",patient);
 
        return user;
     }

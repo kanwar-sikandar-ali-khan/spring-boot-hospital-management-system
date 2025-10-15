@@ -24,6 +24,7 @@ import java.util.List;
                 @Index(name = "idx_patient_birth_date", columnList = "birthDate")
         }
 )
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

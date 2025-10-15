@@ -34,7 +34,7 @@ import static com.codingshuttle.youtube.hospitalManagement.entity.type.RoleType.
 @RequiredArgsConstructor
 @Slf4j
 @EnableMethodSecurity
-public class WebSecurityConfig {
+class WebSecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
