@@ -12,10 +12,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Slf4j
 @SpringBootTest
 public class PatientTests {
 
@@ -47,10 +48,14 @@ public class PatientTests {
 
 //        List<Patient> patientList = patientRepository.findByBornAfterDate(LocalDate.of(1993, 3, 14));
 
-        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(1, 2, Sort.by("name")));
+//        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(1, 2, Sort.by("name")));
+        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(0, 10, Sort.by("name")));
 
         for(Patient patient: patientList) {
-            System.out.println(patient);
+//            System.out.println("sikanndar test: " + patient);
+            log.info("sikanndar test: {}", patient);
+
+//
         }
 //
 //        List<Object[]> bloodGroupList = patientRepository.countEachBloodGroupType();
