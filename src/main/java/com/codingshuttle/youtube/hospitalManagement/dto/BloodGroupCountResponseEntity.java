@@ -15,3 +15,5 @@ public class BloodGroupCountResponseEntity {
     private BloodGroupType bloodGroupType;
     private Long count;
 }
+
+
