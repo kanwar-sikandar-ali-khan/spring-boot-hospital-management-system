@@ -37,10 +37,11 @@ public class User implements UserDetails {
 
     private String providerId;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) ///for  enums
     private AuthProviderType providerType;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    //"@ElementCollection creates a separate table similar to a join table, but it’s not a ManyToMany — it’s a one-to-many mapping to simple values, owned by one entity only."
+    @ElementCollection(fetch = FetchType.EAGER) // will make another table app_user_roles  this  is not N_N relation it only store values
     @Enumerated(EnumType.STRING)
     Set<RoleType> roles = new HashSet<>();
 
@@ -60,7 +61,6 @@ public class User implements UserDetails {
         return authorities;
     }
 }
-
 
 
 
