@@ -30,6 +30,8 @@ public class AppConfig {
         return configuration.getAuthenticationManager();
     }
 
+    // this @Bean UserDetailsService is only for hardcoded, in-memory login.,Allow login without a database,Useful for testing
+    // he use thhis for teaching purpose
 //    @Bean
     UserDetailsService userDetailsService() {
         UserDetails user1 = User.withUsername("admin")

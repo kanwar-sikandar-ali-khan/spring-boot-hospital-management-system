@@ -45,6 +45,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Set<RoleType> roles = new HashSet<>();
 
+    //// this only works on login not at time  of signup
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        return roles.stream()

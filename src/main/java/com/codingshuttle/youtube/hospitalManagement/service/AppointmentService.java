@@ -63,6 +63,10 @@ public class AppointmentService {
 
         return appointment;
     }
+/// // this will only fetch  his related appointments this is a method based authorization
+/// WebSecurityConfig → controls who can hit the endpoint.
+/// @PreAuthorize → controls what data they can access it,it prevents misuse or accidental access by developers or anyone calling the service directly with arbitrary IDs.
+//conclusion: by using @PreAuthorize you cannot hardcoded pass id with another endpoint currentToken user id must be same as givenid
 
     @PreAuthorize("hasRole('ADMIN') OR (hasRole('DOCTOR') AND #doctorId == authentication.principal.id)")
     public List<AppointmentResponseDto> getAllAppointmentsOfDoctor(Long doctorId) {

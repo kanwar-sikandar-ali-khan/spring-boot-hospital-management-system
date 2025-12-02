@@ -16,6 +16,7 @@ import java.util.Date;
 
 @Component
 @Slf4j
+/// for utility function
 public class AuthUtil {
 
     @Value("${jwt.secretKey}")

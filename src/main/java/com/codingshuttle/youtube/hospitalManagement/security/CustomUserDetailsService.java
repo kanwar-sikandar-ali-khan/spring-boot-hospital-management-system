@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+
+// this  CustomUserDetailsService is only for hardcoded, in-memory login.,Allow login without a database,Useful for testing
+// he use thhis for teaching purpose
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;

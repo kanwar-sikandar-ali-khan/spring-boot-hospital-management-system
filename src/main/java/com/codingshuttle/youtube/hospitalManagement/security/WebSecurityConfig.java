@@ -48,15 +48,26 @@ class WebSecurityConfig {
                         sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
 
+                        ///  All permissions
                         .requestMatchers(
                                 "/api/v1/login", "/api/v1/signup", "/swagger-ui/**", "/v3/api-docs/**"
                         ).permitAll()
+
+                        ///  All permissions
                         .requestMatchers("/public/**", "/auth/**").permitAll()
+
+                       /// RolePermissionMapping based authorization
                         .requestMatchers(HttpMethod.DELETE, "/admin/**")
                             .hasAnyAuthority(APPOINTMENT_DELETE.name(),
                                 USER_MANAGE.name())
+
+                        /// only role based authorization
                         .requestMatchers("/admin/**").hasRole(ADMIN.name())
+
+                        /// only role based authorization
                         .requestMatchers("/doctors/**").hasAnyRole(DOCTOR.name(), ADMIN.name())
+
+                        ///  All route should be authenticated except permitAll
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

@@ -46,7 +46,7 @@ public class Patient {
     private String gender;
 
     @OneToOne
-    @MapsId
+    @MapsId /// by  this we can utilize user_id as primarykey  for patient
     private User user;
 
     @CreationTimestamp

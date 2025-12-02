@@ -70,7 +70,7 @@ public class AuthService {
 
 
 
-
+        ///  without token creating patient cool!
         Patient patient = Patient.builder()
                 .name(signupRequestDto.getName())
                 .email(signupRequestDto.getUsername())
